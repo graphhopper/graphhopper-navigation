@@ -160,11 +160,19 @@ public class MapboxResponseConverterTest {
         assertEquals(1.527218, waypointLoc.get(0).asDouble(), .00001);
 
         //Check that there are 3 legs
-        JsonNode legs = json.get("routes").get(0).get("legs");
+        JsonNode route = json.get("routes").get(0);
+        JsonNode legs = route.get("legs");
         assertEquals(3, legs.size());
+
+        double duration = 0;
+        double distance = 0;
 
         for (int i = 0; i < 3; i++) {
             JsonNode leg = legs.get(i);
+
+            duration += leg.get("duration").asDouble();
+            distance += leg.get("distance").asDouble();
+
             JsonNode steps = leg.get("steps");
             JsonNode step = steps.get(0);
             JsonNode maneuver = step.get("maneuver");
@@ -173,6 +181,10 @@ public class MapboxResponseConverterTest {
             maneuver = steps.get(steps.size() - 1).get("maneuver");
             assertEquals("arrive", maneuver.get("type").asText());
         }
+
+        // Check if the duration and distance of the legs sum up to the overall route distance and duration
+        assertEquals(route.get("duration").asDouble(), duration, 1);
+        assertEquals(route.get("distance").asDouble(), distance, 1);
     }
 
     @Test

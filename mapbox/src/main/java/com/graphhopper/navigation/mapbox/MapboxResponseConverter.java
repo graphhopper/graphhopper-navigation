@@ -72,6 +72,8 @@ public class MapboxResponseConverter {
                 if (instruction.getSign() == Instruction.REACHED_VIA || instruction.getSign() == Instruction.FINISH) {
                     putLegInformation(legJson, path, i, time, distance);
                     isFirstInstructionOfLeg = true;
+                    time = 0;
+                    distance = 0;
 
                     if (instruction.getSign() == Instruction.REACHED_VIA) {
                         // Create new leg and steps after a via points
