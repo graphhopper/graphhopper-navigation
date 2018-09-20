@@ -20,6 +20,7 @@ package com.graphhopper.navigation.mapbox;
 import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
 import com.graphhopper.GraphHopperAPI;
+import com.graphhopper.util.Parameters;
 import com.graphhopper.util.StopWatch;
 import com.graphhopper.util.TranslationMap;
 import com.graphhopper.util.shapes.GHPoint;
@@ -117,7 +118,6 @@ public class MapboxResource {
 
         StopWatch sw = new StopWatch().start();
 
-        // TODO: how should we use the "continue_straight" parameter? This is analog to pass_through, would require disabling CH
         GHRequest request;
         if (favoredHeadings.size() > 0) {
             request = new GHRequest(requestPoints, favoredHeadings);
@@ -131,7 +131,9 @@ public class MapboxResource {
                 getHints().
                 put(CALC_POINTS, true).
                 put(INSTRUCTIONS, enableInstructions).
-                put(WAY_POINT_MAX_DISTANCE, minPathPrecision);
+                put(WAY_POINT_MAX_DISTANCE, minPathPrecision).
+                put(Parameters.CH.DISABLE, true).
+                put(Parameters.Routing.PASS_THROUGH, true);
 
         GHResponse ghResponse = graphHopper.route(request);
 
