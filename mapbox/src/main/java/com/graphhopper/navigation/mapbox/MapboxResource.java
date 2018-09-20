@@ -193,6 +193,7 @@ public class MapboxResource {
     }
 
     private List<Double> getBearing(String bearingString) {
+        logger.error("Reading Bearing: " + bearingString);
         if (bearingString == null || bearingString.isEmpty())
             return Collections.EMPTY_LIST;
 
