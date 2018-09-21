@@ -133,7 +133,7 @@ public class MapboxResource {
                 put(INSTRUCTIONS, enableInstructions).
                 put(WAY_POINT_MAX_DISTANCE, minPathPrecision).
                 put(Parameters.CH.DISABLE, true).
-                put(Parameters.Routing.PASS_THROUGH, true);
+                put(Parameters.Routing.PASS_THROUGH, false);
 
         GHResponse ghResponse = graphHopper.route(request);
 
