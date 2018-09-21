@@ -192,21 +192,21 @@ public class MapboxResource {
         }
     }
 
-    private List<Double> getBearing(String bearingString) {
-        logger.error("Reading Bearing: " + bearingString);
+    static List<Double> getBearing(String bearingString) {
         if (bearingString == null || bearingString.isEmpty())
             return Collections.EMPTY_LIST;
 
-        String[] bearingArray = bearingString.split(";");
+        String[] bearingArray = bearingString.split(";", -1);
         List<Double> bearings = new ArrayList<>(bearingArray.length);
 
         for (int i = 0; i < bearingArray.length; i++) {
             String singleBearing = bearingArray[i];
             if (singleBearing.isEmpty()) {
                 bearings.add(Double.NaN);
-            } else if (!singleBearing.contains(",")) {
-                throw new IllegalArgumentException("You passed an invalid bearings parameter " + bearingString);
             } else {
+                if (!singleBearing.contains(",")) {
+                    throw new IllegalArgumentException("You passed an invalid bearings parameter " + bearingString);
+                }
                 String[] singleBearingArray = singleBearing.split(",");
                 try {
                     bearings.add(Double.parseDouble(singleBearingArray[0]));
