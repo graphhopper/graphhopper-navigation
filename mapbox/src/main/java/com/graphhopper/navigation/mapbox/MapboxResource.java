@@ -122,7 +122,7 @@ public class MapboxResource {
         GHResponse ghResponse = calcRoute(favoredHeadings, requestPoints, vehicleStr, weighting, localeStr, enableInstructions, minPathPrecision);
 
         // Only do this, when there are more than 2 points, otherwise we use alternative routes
-        if (!ghResponse.hasErrors() && favoredHeadings.size() > 2) {
+        if (!ghResponse.hasErrors() && favoredHeadings.size() > 0) {
             GHResponse noHeadingResponse = calcRoute(Collections.EMPTY_LIST, requestPoints, vehicleStr, weighting, localeStr, enableInstructions, minPathPrecision);
             if (ghResponse.getBest().getDistance() != noHeadingResponse.getBest().getDistance()) {
                 ghResponse.getAll().add(noHeadingResponse.getBest());
@@ -164,9 +164,6 @@ public class MapboxResource {
                 put(WAY_POINT_MAX_DISTANCE, minPathPrecision).
                 put(Parameters.CH.DISABLE, true).
                 put(Parameters.Routing.PASS_THROUGH, false);
-
-        if (requestPoints.size() == 2)
-            request.setAlgorithm(Parameters.Algorithms.ALT_ROUTE);
 
         return graphHopper.route(request);
     }
