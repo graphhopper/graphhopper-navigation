@@ -63,14 +63,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!--TMP fix see: https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <useSystemClassLoader>false</useSystemClassLoader>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
