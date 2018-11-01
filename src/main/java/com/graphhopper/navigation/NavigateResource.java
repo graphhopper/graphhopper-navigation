@@ -43,7 +43,8 @@ import java.util.List;
 import static com.graphhopper.util.Parameters.Routing.*;
 
 /**
- * Provides an endpoint that follows the specification of the Mapbox API v5
+ * Provides an endpoint that is consumable with the Mapbox Navigation SDK. The Mapbox Navigation SDK consumes json
+ * responses that follow the specification of the Mapbox API v5.
  *
  * See: https://www.mapbox.com/api-documentation/#directions
  *
