@@ -7,4 +7,3 @@ in_mi_singular=In 1 mile
 in_mi=In %1$s miles
 in_ft=In %1$s feet
 for_mi=for %1$s miles
-continue=Continue %1$s

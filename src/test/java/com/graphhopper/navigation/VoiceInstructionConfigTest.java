@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNull;
 
 public class VoiceInstructionConfigTest {
 
+    private final TranslationMap trMap = new TranslationMap().doImport();
     private final TranslationMap mtrMap = new NavigateResponseConverterTranslationMap().doImport();
     private final Locale locale = Locale.ENGLISH;
 
@@ -96,7 +97,7 @@ public class VoiceInstructionConfigTest {
 
     @Test
     public void initialVICMetricTest() {
-        InitialVoiceInstructionConfig configMetric = new InitialVoiceInstructionConfig(FOR_HIGHER_DISTANCE_PLURAL.metric, mtrMap, locale, 4250, 250, DistanceUtils.Unit.METRIC);
+        InitialVoiceInstructionConfig configMetric = new InitialVoiceInstructionConfig(FOR_HIGHER_DISTANCE_PLURAL.metric, trMap, mtrMap, locale, 4250, 250, DistanceUtils.Unit.METRIC);
 
         compareVoiceInstructionValues(
                 4000,
@@ -113,24 +114,24 @@ public class VoiceInstructionConfigTest {
 
     @Test
     public void germanInitialVICMetricTest() {
-        InitialVoiceInstructionConfig configMetric = new InitialVoiceInstructionConfig(FOR_HIGHER_DISTANCE_PLURAL.metric, mtrMap, Locale.GERMAN, 4250, 250, DistanceUtils.Unit.METRIC);
+        InitialVoiceInstructionConfig configMetric = new InitialVoiceInstructionConfig(FOR_HIGHER_DISTANCE_PLURAL.metric, trMap, mtrMap, Locale.GERMAN, 4250, 250, DistanceUtils.Unit.METRIC);
 
         compareVoiceInstructionValues(
                 4000,
-                "Dem Straßenverlauf für 4 Kilometer folgen",
+                "Dem Straßenverlauf folgen für 4 Kilometer",
                 configMetric.getConfigForDistance(5000, "abbiegen", " dann")
         );
 
         compareVoiceInstructionValues(
                 4000,
-                "Dem Straßenverlauf für 4 Kilometer folgen",
+                "Dem Straßenverlauf folgen für 4 Kilometer",
                 configMetric.getConfigForDistance(4500, "abbiegen", " dann")
         );
     }
 
     @Test
     public void initialVICImperialTest() {
-        InitialVoiceInstructionConfig configImperial = new InitialVoiceInstructionConfig(FOR_HIGHER_DISTANCE_PLURAL.imperial, mtrMap, locale, 4250, 250, DistanceUtils.Unit.IMPERIAL);
+        InitialVoiceInstructionConfig configImperial = new InitialVoiceInstructionConfig(FOR_HIGHER_DISTANCE_PLURAL.imperial, trMap, mtrMap, locale, 4250, 250, DistanceUtils.Unit.IMPERIAL);
 
         compareVoiceInstructionValues(
                 3219,
