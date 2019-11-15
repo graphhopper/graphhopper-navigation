@@ -7,3 +7,4 @@ in_mi_singular=In 1 Meile
 in_mi=In %1$s Meilen
 in_ft=In %1$s Fuß
 for_mi=für %1$s Meilen
+continue=Dem Straßenverlauf %1$s folgen

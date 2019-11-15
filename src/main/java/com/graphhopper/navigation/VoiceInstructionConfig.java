@@ -126,7 +126,7 @@ class InitialVoiceInstructionConfig extends VoiceInstructionConfig {
         if (distance > distanceForInitialStayInstruction) {
             int spokenDistance = distanceAlongGeometry(distance);
             int distanceVoiceValue = distanceVoiceValue(distance);
-            String continueDescription = translationMap.getWithFallBack(locale).tr("continue") + " " + translationMap.getWithFallBack(locale).tr(key, distanceVoiceValue);
+            String continueDescription = translationMap.getWithFallBack(locale).tr("continue", translationMap.getWithFallBack(locale).tr(key, distanceVoiceValue));
             return new VoiceInstructionValue(spokenDistance, continueDescription);
         }
         return null;
