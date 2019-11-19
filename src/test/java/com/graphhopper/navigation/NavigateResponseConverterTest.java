@@ -144,7 +144,6 @@ public class NavigateResponseConverterTest {
 
         // Step 4 is about 240m long
         JsonNode step = steps.get(4);
-        JsonNode maneuver = step.get("maneuver");
 
         JsonNode voiceInstructions = step.get("voiceInstructions");
         assertEquals(2, voiceInstructions.size());
@@ -154,7 +153,6 @@ public class NavigateResponseConverterTest {
 
         // Step 14 is over 3km long
         step = steps.get(14);
-        maneuver = step.get("maneuver");
 
         voiceInstructions = step.get("voiceInstructions");
         assertEquals(4, voiceInstructions.size());
