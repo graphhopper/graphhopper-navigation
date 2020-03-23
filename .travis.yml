@@ -30,13 +30,14 @@ script:
   - "mvn clean test verify -B"
 
 after_success:
-  - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ] && [ "$TRAVIS_TAG" != "" ]; then
-        echo "release to maven central";
-        mvn versions:set -DnewVersion=$TRAVIS_TAG -DgenerateBackupPoms=false;
-        mvn deploy -P release --settings settings.xml -DskipTests=true -B;
-    else
-        echo "Not deploying artifacts for $TRAVIS_BRANCH";
-    fi
+  - echo "travis tag $TRAVIS_TAG travis jdk $TRAVIS_JDS_VERSION";
+#  - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ] && [ "$TRAVIS_TAG" != "" ]; then
+#        echo "release to maven central";
+#        mvn versions:set -DnewVersion=$TRAVIS_TAG -DgenerateBackupPoms=false;
+#        mvn deploy -P release --settings settings.xml -DskipTests=true -B;
+#    else
+#        echo "Not deploying artifacts for $TRAVIS_BRANCH";
+#    fi
 notifications:
   email:
     - secure: $EMAIL
