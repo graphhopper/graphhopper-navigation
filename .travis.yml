@@ -30,7 +30,7 @@ script:
   - "mvn clean test verify -B"
 
 after_success:
-  - echo "travis tag $TRAVIS_TAG travis jdk $TRAVIS_JDS_VERSION";
+  - echo "travis tag $TRAVIS_TAG travis jdk $TRAVIS_JDK_VERSION";
 #  - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ] && [ "$TRAVIS_TAG" != "" ]; then
 #        echo "release to maven central";
 #        mvn versions:set -DnewVersion=$TRAVIS_TAG -DgenerateBackupPoms=false;
