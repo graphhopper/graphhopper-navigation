@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/graphhopper/graphhopper-navigation.svg?branch=master)](https://travis-ci.org/graphhopper/graphhopper-navigation)
 
-# Deprecation
+# Deprecation of this Repository
 
 For the GraphHopper routing engine 2.0 and beyond this navigation endpoint is directly integrated in GraphHopper. See [this issue](https://github.com/graphhopper/graphhopper/pull/2081).
 
